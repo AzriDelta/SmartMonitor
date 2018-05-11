@@ -8,59 +8,63 @@
     tools:context=".ReceivefromServer"
     tools:showIn="@layout/activity_receivefrom_server">
 
-    <TextView
+    <LinearLayout android:focusable="true"
+        android:focusableInTouchMode="true" android:layout_width="0px"
+        android:layout_height="0px" />
+
+    <EditText
         android:id="@+id/encryptedUsername"
         android:layout_width="213dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="14dp"
+        android:layout_marginBottom="11dp"
         android:layout_marginEnd="83dp"
         android:layout_marginStart="83dp"
-        android:layout_marginTop="96dp"
-        android:text="@string/username_encrypted"
+        android:layout_marginTop="72dp"
+        android:hint="@string/username"
         app:layout_constraintBottom_toTopOf="@+id/encryptedPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="text|textEmailAddress" />
 
-    <TextView
+    <EditText
         android:id="@+id/encryptedPassword"
         android:layout_width="213dp"
         android:layout_height="42dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="83dp"
         android:layout_marginStart="83dp"
-        android:layout_marginTop="14dp"
-        android:text="@string/password_encrypted"
-        app:layout_constraintBottom_toTopOf="@+id/getIt"
+        android:layout_marginTop="11dp"
+        android:hint="@string/password"
+        app:layout_constraintBottom_toTopOf="@+id/sendIt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/encryptedUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/encryptedUsername"
+        android:inputType="text|textEmailAddress" />
 
     <Button
         android:id="@+id/getIt"
         android:layout_width="101dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="141dp"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="142dp"
         android:text="@string/get_it"
+        app:layout_constraintBottom_toTopOf="@+id/decryptIt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/encryptedPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/sendIt" />
 
     <Button
         android:id="@+id/sendIt"
         android:layout_width="101dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:layout_marginEnd="141dp"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginStart="142dp"
         android:text="@string/send_it"
-        app:layout_constraintBottom_toTopOf="@+id/encryptedUsername"
+        app:layout_constraintBottom_toTopOf="@+id/getIt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/encryptedPassword" />
 
     <Button
         android:id="@+id/decryptIt"
@@ -78,16 +82,14 @@
     <TextView
         android:id="@+id/decryptedUsername"
         android:layout_width="213dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="14dp"
+        android:layout_height="60dp"
         android:layout_marginEnd="83dp"
         android:layout_marginStart="83dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
-        android:text="@string/username_decrypted"
-        app:layout_constraintBottom_toTopOf="@+id/decryptedPassword"
+        android:hint="@string/username_decrypted"
+        android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/decryptIt"
         tools:ignore="LabelFor" />
@@ -95,18 +97,21 @@
     <TextView
         android:id="@+id/decryptedPassword"
         android:layout_width="213dp"
-        android:layout_height="38dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="93dp"
         android:layout_marginEnd="83dp"
         android:layout_marginStart="83dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
-        android:text="@string/password_decrypted"
+        android:hint="@string/password_decrypted"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/decryptedUsername"
-        tools:ignore="LabelFor"
-        tools:text="Password Encrypted" />
-
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="LabelFor" />
 
 
 </android.support.constraint.ConstraintLayout>
