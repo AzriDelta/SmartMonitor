@@ -9,5 +9,5 @@
     <string name="username_encrypted">Username Encrypted</string>
     <string name="password_encrypted">Password Encrypted</string>
     <string name="username_decrypted">Username Decrypted</string>
-    <string name="password_decrypted" />
+    <string name="password_decrypted">Password Decrypted</string>
 </resources>

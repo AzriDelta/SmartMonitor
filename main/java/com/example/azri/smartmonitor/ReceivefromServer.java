@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,7 @@ public class ReceivefromServer extends AppCompatActivity {
     private TextView encryptedUsername, encryptedPassword;
     private TextView decryptedUsername, decryptedPassword;
     private DatabaseReference userRef, user3Ref;
+    private String str_plainUsername, str_plainPassword;
     private String str_encryptedUsername, str_encryptedPassword;
     private String str_decryptedUsername, str_decryptedPassword;
     private String str_usernameFetched, str_passwordFetched;
@@ -46,7 +48,8 @@ public class ReceivefromServer extends AppCompatActivity {
         Button decryptIt = findViewById(R.id.decryptIt);
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
-
+        decryptedUsername.setMovementMethod(new ScrollingMovementMethod());
+        decryptedPassword.setMovementMethod(new ScrollingMovementMethod());
 
         getSupportActionBar().setTitle("Smart Monitor"); //set title on Toolbar
 
@@ -61,8 +64,12 @@ public class ReceivefromServer extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                str_encryptedUsername = pushData.encryptAndPush("delta");
-                str_encryptedPassword = pushData.encryptAndPush("delta12345");
+
+                str_plainUsername = encryptedUsername.getText().toString();
+                str_plainPassword = encryptedPassword.getText().toString();
+
+                str_encryptedUsername = pushData.encryptAndPush(str_plainUsername);
+                str_encryptedPassword = pushData.encryptAndPush(str_plainPassword);
 
                 userRef.child("user3").child("username").setValue(str_encryptedUsername);
                 userRef.child("user3").child("password").setValue(str_encryptedPassword);
@@ -82,8 +89,8 @@ public class ReceivefromServer extends AppCompatActivity {
                         Log.d(TAG, "Encrypted Username is: " + str_usernameFetched);
                         Log.d(TAG, "Encrypted Password is: " + str_passwordFetched);
 
-                        encryptedUsername.setText(str_usernameFetched);
-                        encryptedPassword.setText(str_passwordFetched);
+                        decryptedUsername.setText(str_usernameFetched);
+                        decryptedPassword.setText(str_passwordFetched);
                     }
 
                     @Override
